@@ -1,21 +1,21 @@
+#!/usr/bin/python2
+# coding:utf-8
 '''
 Created on 30 de nov de 2018
 
 @author: João Paulo Just Peixoto <joao.just@ifba.edu.br>
 '''
-#!/usr/bin/python2
-# coding:utf-8
 import mysql.connector  # pip install mysql-connector
 import cgi, cgitb
 import sys
 
 #cgitb.enable()
+print("Content-type: text/html\n")
 
 # Pega os dados via GET
 form = cgi.FieldStorage()
 
 if "temp" not in form or "hum" not in form or "rain" not in form:
-    print("Content-type: text/plain\n")
     print("ERRO: Todos os parâmetros são obrigatórios.")
     sys.exit()
 
@@ -28,7 +28,6 @@ chuva = int(chuva)
 
 # Se ambos temperatura e umidade foram 0, provavelmente há algo errado
 if temperatura == umidade == 0:
-    print("Content-type: text/plain\n")
     print("ERRO: Dados inválidos.")
     sys.exit()
 
@@ -36,7 +35,7 @@ if temperatura == umidade == 0:
 mydb = mysql.connector.connect(
     host = "mysql.just.pro.br",
     user = "ifba_sensors",
-    passwd = "iecdbp55",
+    passwd = "",
     database = "ifba_sensors"
 )
 
@@ -48,5 +47,4 @@ mycursor.execute(sql, val)
 mydb.commit()
 
 # Mensagem final
-print("Content-type: text/plain\n")
 print("Temperatura: %f C\nUmidade: %d %%\nChuva: %d" % (temperatura, umidade, chuva))
