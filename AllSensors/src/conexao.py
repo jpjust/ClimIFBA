@@ -14,6 +14,7 @@ import serial.tools.list_ports
 
 # Portas no sistema
 ports = list(serial.tools.list_ports.comports())
+
 debug = True
 intervalo = 300 # Intervalo entre as medições em segundos
 ser = 0
