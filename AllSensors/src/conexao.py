@@ -35,9 +35,10 @@ while True:
         
         # Faz a leitura e tratamento dos dados
         dados = ser.readline()
-        linha = dados.decode("ansi")
-        if ";" in linha:
-            temp, um = linha.split(";")
+        linha = dados.decode("ascii")
+        if "ALLSENSORS.SINK:" in linha:
+            id, dados = linha.split(":")
+            temp, um = dados.split(";")
             temp = eval(temp)
             um = eval(um)
             chuva = 0    # Para uso futuro
@@ -55,4 +56,6 @@ while True:
         print("Erro ao fazer leitura serial.")
     except urllib.error.URLError:
         print("Erro ao fazer a requisição HTTP.")
+    except ValueError:
+        print("Nenhum valor recebido.")
     time.sleep(1)
