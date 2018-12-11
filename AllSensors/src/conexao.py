@@ -1,10 +1,10 @@
+#!/usr/bin/python3
+# coding:utf-8
 '''
 Created on 30 de nov de 2018
 
 @author: João Paulo Just Peixoto <joao.just@ifba.edu.br>
 '''
-#!/usr/bin/python3
-# coding:utf-8
 import serial   # pip install pyserial
 import time
 import urllib.request
@@ -18,11 +18,11 @@ while True:
         try:
             # Abre a porta serial, caso não tenha sido aberta antes
             if not ser:
-                ser = serial.Serial('COM16', 9600, timeout=0)
+                ser = serial.Serial('/dev/cu.usbmodem14201', 9600, timeout=0)
 
             # Faz a leitura e tratamento dos dados
             dados = ser.readline()
-            linha = dados.decode("ansi")
+            linha = dados.decode("ascii")
             if ";" in linha:
                 temp, um = linha.split(";")
                 temp = eval(temp)
