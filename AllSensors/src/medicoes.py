@@ -23,7 +23,7 @@ banco = mysql.connector.connect(
 # Faz a pesquisa das últimas 100 medições
 cursor = banco.cursor()
 cursor.execute("SET time_zone = '-3:00'")
-cursor.execute("SELECT hora, temperatura, umidade, chuva FROM medicoes ORDER BY hora DESC")
+cursor.execute("SELECT hora, temperatura, umidade, chuva FROM medicoes ORDER BY hora DESC LIMIT 100")
 resultados = cursor.fetchall()
 
 # Exibe os resultados da consulta
