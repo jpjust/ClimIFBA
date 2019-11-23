@@ -6,6 +6,8 @@ from app import app
 import numpy as np
 from matplotlib.figure import Figure
 
+from app.models.tables import Medicao
+
 # Retorna o código base64 da imagem no formato PNG
 def Graphic():
     # Dados
@@ -40,6 +42,7 @@ def Graphic():
     return data
 
 # Index
-@app.route("/", defaults={"graph": None})
-def index(graph):
-    return render_template("index.html", graph=Graphic())
+@app.route("/", defaults={"graph": None, "medicao": None})
+def index(graph, medicao):
+    m = Medicao.query.filter(Medicao.id <= 100).all()
+    return render_template("index.html", graph=Graphic(), medicao=m)
