@@ -51,6 +51,5 @@ def Graphic():
     return data
 
 # Index
-@app.route("/", defaults={"graph": None})
-def index(graph):
+def padrao():
     return render_template("index.html", graph=Graphic())

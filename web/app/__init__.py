@@ -6,10 +6,13 @@ from flask_migrate import Migrate, MigrateCommand
 app = Flask(__name__)
 app.config.from_object("config")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://ifba_sensors:iecdbp55@mysql.just.pro.br/ifba_sensors'
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command("db", MigrateCommand)
 from app.controllers import default
+
+@app.route('/')
+def index():
+    return default.padrao()
