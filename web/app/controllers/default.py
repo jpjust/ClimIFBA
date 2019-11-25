@@ -6,6 +6,7 @@ from io import BytesIO
 import matplotlib
 from matplotlib.figure import Figure
 import matplotlib.dates as dates
+from datetime import datetime, timedelta
 import pytz
 
 # Retorna o código base64 da imagem no formato PNG
@@ -15,7 +16,9 @@ def Graphic():
     tz_servidor = pytz.timezone('PST8PDT')
 
     # Obtém os dados
-    medicoes = Medicao.query.order_by(Medicao.id.desc()).limit(100)
+    ultimo_dia = datetime.now() - timedelta(days=1)
+    ultimo_dia = ultimo_dia.astimezone(tz_servidor)
+    medicoes = Medicao.query.filter(Medicao.hora >= ultimo_dia).order_by(Medicao.id.desc())
     temperaturas = []
     umidades = []
     x = []
