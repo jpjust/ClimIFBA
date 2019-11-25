@@ -1,16 +1,19 @@
-import base64
-from io import BytesIO
-
 from flask import render_template
 from app import app
-import numpy as np
+from app.models.tables import Medicao
+import base64
+from io import BytesIO
+import matplotlib
 from matplotlib.figure import Figure
 import matplotlib.dates as dates
-
-from app.models.tables import Medicao
+import pytz
 
 # Retorna o código base64 da imagem no formato PNG
 def Graphic():
+    # Define o timezone da plotagem e da hora que recebe do servidor
+    matplotlib.rcParams['timezone'] = 'America/Bahia'
+    tz_servidor = pytz.timezone('PST8PDT')
+
     # Obtém os dados
     medicoes = Medicao.query.order_by(Medicao.id.desc()).limit(100)
     temperaturas = []
@@ -19,7 +22,8 @@ def Graphic():
 
     for m in medicoes:
         temperaturas.insert(0, m.temperatura)
-        x.insert(0, m.hora)
+        hora = m.hora.replace(tzinfo=tz_servidor)
+        x.insert(0, hora)
 
     # Cria um objeto Figure sem usar o pyplot
     fig = Figure()

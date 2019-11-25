@@ -5,7 +5,7 @@ class Medicao(db.Model):
     __tablename__ = "medicoes"
 
     id = db.Column(db.Integer, primary_key=True)
-    hora = db.Column(db.DateTime)
+    hora = db.Column(db.DateTime(timezone=True))
     temperatura = db.Column(db.Float)
     umidade = db.Column(db.Integer)
 
