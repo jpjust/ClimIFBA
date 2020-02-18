@@ -2,19 +2,40 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>ClimIFBA</title>
-    <link rel="stylesheet" href="../static/index.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
 </head>
 
-<body>
+<div>
+    <header>
+        <img id="logo" src="../static/images/LogoT.webp" alt="ClimIFBA Logo" />
+        <h1>Metereologia Valença-BA</h1>
+    </header>
 
-    <h1>ClimIFBA</h1>
-    <h2>Metereologia Valença-BA</h2>
-    <h3>Data:</h3><h3>Período:</h3>
-    <img src="data:image/png;base64,{{ graph }}" alt="Gráfico" />
+    <body>
+        <form action="/" method="POST">
+            <fieldset>
+                <legend><h2>Gráfico</h2></legend>
 
-    <script src="../static/index.js"></script>
-</body>
+                <h3 id="dinicial">Data e Hora Inicial:
+                    <input type="datetime-local" value="{{dinicial}}" name="dinicial"/>
+                </h3>
+                <h3 id="dfinal">Data e Hora Final:
+                    <input id="v" type="datetime-local" value="{{dfinal}}" name="dfinal">
+                </h3>
+                    <button id="enviar" type="submit">Enviar</button>
 
+                <img id="graph" src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
+
+            </fieldset>
+        </form>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+    </body>
+
+    <footer>
+        <p>----------</p>
+    </footer>
+</div>
 </html>

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+div{
+    width: 896px;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header{
+    background-color: red;
+    height: 181px;
+}
+
+header h1{
+    font-size: x-large;
+    margin: -6px auto auto auto;
+    padding-left: 30px;
+    background-color: blue;
+}
+
+body{
+    background-color: purple;
+}
+
+#enviar{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#enviar:hover{
+    background-color: #46a049;
+}
+
+#graph{
+    margin-left: 56px;
+}
+
+footer{
+    background-color: yellow;
+}
