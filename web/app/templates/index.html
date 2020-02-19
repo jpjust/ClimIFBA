@@ -3,27 +3,29 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>ClimIFBA</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" integrity="sha384-564a28f31e021ac3b7f87871bfc4ff4393da5ed90ab6eeae8394ce78d57a8018857963c614df4cba139fdb743d21f8e1" crossorigin="anonymous">
 </head>
 
 <div>
     <header>
         <img id="logo" src="../static/images/LogoT.webp" alt="ClimIFBA Logo" />
-        <h1>Metereologia Valença-BA</h1>
+        <h1>Meteoreologia Valença-BA</h1>
     </header>
 
     <body>
         <form action="/" method="POST">
-            <fieldset>
+            <fieldset id="field">
                 <legend><h2>Gráfico</h2></legend>
 
-                <h3 id="dinicial">Data e Hora Inicial:
-                    <input type="datetime-local" value="{{dinicial}}" name="dinicial"/>
-                </h3>
-                <h3 id="dfinal">Data e Hora Final:
-                    <input type="datetime-local" value="{{dfinal}}" name="dfinal">
-                </h3>
+                <h3 id="tdinicial" class="dinicial">Data e Hora Inicial:</h3>
+                    <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial"/>
+
+                <h3  id="tdfinal" class="dfinal">Data e Hora Final:</h3>
+                    <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal">
+
                     <button id="enviar" type="submit">Enviar</button>
 
                 <img id="graph" src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
@@ -32,6 +34,9 @@
         </form>
 
         <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.slim.min.js') }}" integrity="sha384-27aa9ae3ce3d6e5136fa9a13e169f22a1bf9bd91794ab3e8d22123c01bca53b8a6185015d30c23d7261fa11489a19fa7" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js') }}" integrity="sha384-43a13d447bdb2326452687edfb69896c76845a5765bc8f48398cb99f7cd5f73cd3b66237524b1d41156fa3131fa28028" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}" integrity="sha384-c1f483176139d18d83d6e51d8f43b7b8c0499e3b940f8221ed8c1a61dd62a9f92d8f452877c1821319773a0f227f007a" crossorigin="anonymous"></script>
     </body>
 
     <footer>

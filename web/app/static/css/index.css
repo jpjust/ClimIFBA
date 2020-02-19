@@ -22,6 +22,34 @@ body{
     background-color: purple;
 }
 
+#field{
+    height: 640px;
+}
+
+.dinicial, .dfinal, #enviar, #graph{
+    position: absolute;
+}
+
+#tdinicial{
+    right: 756px;
+    top: 230px;
+}
+
+#tdfinal{
+    right: 419px;
+    top: 230px;
+}
+
+#fdinicial{
+    right: 736px;
+    top: 280px;
+}
+
+#fdfinal{
+    right: 396px;
+    top: 280px;
+}
+
 #enviar{
     background-color: #4CAF50;
     border: none;
@@ -29,6 +57,8 @@ body{
     padding: 7px 14px;
     font-size: 16px;
     cursor: pointer;
+    right: 632px;
+    top: 272px;
 }
 
 #enviar:hover{
@@ -36,7 +66,8 @@ body{
 }
 
 #graph{
-    margin-left: 56px;
+    left: 363px;
+    top: 330px;
 }
 
 footer{
