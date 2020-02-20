@@ -1,27 +1,22 @@
 #include <DHT.h>
-#include <DHT_U.h>
-#include <Adafruit_Sensor.h>
 
-// Configurações do sensor DHT11
-#define DHT_PIN A1      // Porta
-#define DHT_TYPE DHT11  // Tipo
+// Configurações do sensor DHT22
+#define DHT_PIN 8       // Porta digital
+#define DHT_TYPE DHT22  // Tipo
 
 DHT dht(DHT_PIN, DHT_TYPE);
-
-// Variáveis globais
-char data[7];
-int t, h;
 
 void setup()
 {
   Serial.begin(9600);
+  dht.begin();
 }
 
 void loop()
 {
-  t = dht.readTemperature();
-  h = dht.readHumidity();
-  sprintf(data, "%d;%d\n", t, h);
-  Serial.print(data);
   delay(2000);
+
+  Serial.print(dht.readTemperature());
+  Serial.print(";");
+  Serial.println(dht.readHumidity());
 }
