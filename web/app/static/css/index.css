@@ -1,75 +1,113 @@
 @charset "UTF-8";
 
 div{
-    width: 896px;
+    width: 1196px;
     margin: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, footer{
+    position: absolute;
+    border-radius: 10px;
+}
+
 header{
-    background-color: red;
-    height: 181px;
+    top: 10px;
+    height: 200px;
+    width: 1196px;
+    margin: auto;
+    position: absolute;
+    background-color: #0A5517;
+}
+
+#logo{
+    position: absolute;
+    left: 140px;
+    top: 5px;
+    background-color: #58771b;
 }
 
 header h1{
+    top: 172px;
+    width: 1056px;
+    position: absolute;
     font-size: x-large;
-    margin: -6px auto auto auto;
-    padding-left: 30px;
-    background-color: blue;
+    margin: auto;
+    padding-left: 140px;
+    background-color: #19882c;
+    color: white;
 }
 
 body{
-    background-color: purple;
+    background-color: skyblue;
 }
 
 #field{
-    height: 640px;
+    margin-top: 220px;
+    height: 700px;
+    margin-bottom: auto;
+    border: groove medium;
+    border-radius: 10px;
+    background-color: white;
 }
 
-.dinicial, .dfinal, #enviar, #graph{
-    position: absolute;
+#sfield{
+    left: 400px;
+    height: 140px;
+    width: 560px;
+    margin: 5px auto;
+    border: groove medium;
+    background-color: skyblue;
 }
 
 #tdinicial{
-    right: 756px;
-    top: 230px;
+    left: 43px;
+    top: 5px;
+    text-align: center;
 }
 
 #tdfinal{
-    right: 419px;
-    top: 230px;
+    right: 43px;
+    top: 5px;
+    text-align: center;
 }
 
 #fdinicial{
-    right: 736px;
-    top: 280px;
+    left: 10px;
+    top: 100px;
 }
 
 #fdfinal{
-    right: 396px;
-    top: 280px;
+    right: 10px;
+    top: 100px;
 }
 
 #enviar{
     background-color: #4CAF50;
     border: none;
+    border-radius: 100px;
     color: white;
-    padding: 7px 14px;
+    padding: 20px 8px;
     font-size: 16px;
     cursor: pointer;
-    right: 632px;
-    top: 272px;
+    left: 250px;
+    top: 60px;
 }
 
 #enviar:hover{
     background-color: #46a049;
+    color: black;
 }
 
 #graph{
     left: 363px;
-    top: 330px;
+    top: 380px;
+    margin-top: 15px;
 }
 
 footer{
-    background-color: yellow;
+    margin-top: 10px;
+    background-color: #0A5517;
+    height: 100px;
+    width: 1196px;
 }
