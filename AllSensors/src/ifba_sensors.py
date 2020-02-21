@@ -23,7 +23,7 @@ temperatura = form["temp"].value
 umidade = form["hum"].value
 chuva = form["rain"].value
 temperatura = float(temperatura)
-umidade = int(umidade)
+umidade = float(umidade)
 chuva = int(chuva)
 
 # Se ambos temperatura e umidade foram 0, provavelmente há algo errado
@@ -47,4 +47,4 @@ mycursor.execute(sql, val)
 mydb.commit()
 
 # Mensagem final
-print("Temperatura: %f C\nUmidade: %d %%\nChuva: %d" % (temperatura, umidade, chuva))
+print("Temperatura: %f C\nUmidade: %f %%\nChuva: %d" % (temperatura, umidade, chuva))
