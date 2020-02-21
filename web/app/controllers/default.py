@@ -34,7 +34,13 @@ def Graphic():
     umidades = []
     x = []
 
+    # Se não houver medições, retorna nulo
+    if medicoes.count() == 0:
+        return 0
+
+    # Coleta as medições
     for m in medicoes:
+        print(m)
         temperaturas.insert(0, m.temperatura)
         hora = m.hora.replace(tzinfo=tz_servidor)
         x.insert(0, hora)
