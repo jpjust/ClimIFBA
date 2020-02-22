@@ -6,7 +6,7 @@ div{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, footer{
+header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, footer #ifba{
     position: absolute;
     border-radius: 10px;
 }
@@ -22,18 +22,18 @@ header{
 
 #logo{
     position: absolute;
-    left: 140px;
+    left: 145px;
     top: 5px;
     background-color: #58771b;
 }
 
 header h1{
     top: 172px;
-    width: 1056px;
+    width: 1051px;
     position: absolute;
     font-size: x-large;
     margin: auto;
-    padding-left: 140px;
+    padding-left: 145px;
     background-color: #19882c;
     color: white;
 }
@@ -100,14 +100,20 @@ body{
 }
 
 #graph{
-    left: 363px;
-    top: 380px;
+    left: -40px;
+    top: 150px;
     margin-top: 15px;
 }
 
 footer{
     margin-top: 10px;
     background-color: #0A5517;
-    height: 100px;
+    border-radius: 10px;
+    height: 160px;
     width: 1196px;
+}
+
+#ifba{
+    top: 972px;
+    left: 410px;
 }
