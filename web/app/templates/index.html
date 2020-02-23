@@ -3,13 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ClimIFBA</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" href="../static/css/index.css">
 </head>
 
 <div>
     <header>
-        <img id="logo" src="../static/images/LogoT.webp" alt="ClimIFBA Logo" />
+        <img id="logo" src="../static/images/LogoT.webp" alt="ClimIFBA Logo" /> 
         <h1>Meteoreologia Valença-BA</h1>
     </header>
 
@@ -18,23 +21,29 @@
             <fieldset id="field">
                 <div id="sfield">
                     <h2 id="tdinicial" class="dinicial">Data e Hora <br /> Inicial:</h2>
-                        <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial"/>
+                        <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial" />
 
                     <h2  id="tdfinal" class="dfinal">Data e Hora <br /> Final:</h2>
-                        <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal">
+                        <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal" />
 
                         <button id="enviar" type="submit">Enviar</button>
+                </div>
 
                 <img id="graph" src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
 
+                <a href="data:image/png;base64,{{ graph }}" download="graph.png">
+                    <input id="download" type="button" />
+                </a>
             </fieldset>
         </form>
 
         <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <script type="text/javascript" src="../static/js/index.js"></script>
     </body>
 
     <footer>
         <img id="ifba" src="../static/images/ifbame.webp" alt="Imagem do Rodapé">
+       <a href="https://portal.ifba.edu.br/valenca" target="_blank"><p>&copy; IFBA - Campus Valença</p></a>
     </footer>
 </div>
 </html>

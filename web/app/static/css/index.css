@@ -6,7 +6,7 @@ div{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, footer #ifba{
+header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, #download, footer #ifba{
     position: absolute;
     border-radius: 10px;
 }
@@ -44,7 +44,7 @@ body{
 
 #field{
     margin-top: 220px;
-    height: 700px;
+    height: 675px;
     margin-bottom: auto;
     border: groove medium;
     border-radius: 10px;
@@ -55,7 +55,7 @@ body{
     left: 400px;
     height: 140px;
     width: 560px;
-    margin: 5px auto;
+    margin: 10px auto;
     border: groove medium;
     background-color: skyblue;
 }
@@ -82,6 +82,11 @@ body{
     top: 100px;
 }
 
+input:hover{
+    background-color: #ccc;
+    font-weight: bolder;
+}
+
 #enviar{
     background-color: #4CAF50;
     border: none;
@@ -100,20 +105,49 @@ body{
 }
 
 #graph{
-    left: -40px;
-    top: 150px;
+    left: 313px;
+    top: 390px;
     margin-top: 15px;
+}
+
+#download{
+    background-color: black;
+    background-image: url(../images/downloadw.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    top: 800px;
+    left: 907px;
+    height: 40px;
+    width: 40px;
+}
+
+#download:hover{
+    background-color: white;
+    border-style: solid;
+    background-image: url(../images/downloadb.webp);
 }
 
 footer{
     margin-top: 10px;
     background-color: #0A5517;
     border-radius: 10px;
-    height: 160px;
+    height: 170px;
     width: 1196px;
 }
 
 #ifba{
-    top: 972px;
+    top: 947px;
     left: 410px;
+}
+
+p{
+    position: absolute;
+    top: 1057px;
+    left: 577px;
+    color: white;
+    font-style: italic;
+    font-weight: bolder;
 }
