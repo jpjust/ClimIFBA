@@ -6,7 +6,7 @@ div{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, #download, footer #ifba{
+header, #logo, header h1, #sfield, .dinicial, .dfinal, #enviar, #graph, #download, footer, #ifba, #made{
     position: absolute;
     border-radius: 10px;
 }
@@ -105,7 +105,7 @@ input:hover{
 }
 
 #graph{
-    left: 313px;
+    left: 325px;
     top: 390px;
     margin-top: 15px;
 }
@@ -139,14 +139,19 @@ footer{
 }
 
 #ifba{
-    top: 947px;
-    left: 410px;
+    top: 10px;
+    left: 335px;
+}
+
+#made {
+    right:20px;
+    top: 135px;
 }
 
 p{
     position: absolute;
-    top: 1057px;
-    left: 577px;
+    top: 125px;
+    left: 500px;
     color: white;
     font-style: italic;
     font-weight: bolder;
