@@ -10,7 +10,7 @@ from matplotlib.figure import Figure
 import matplotlib.dates as dates
 from datetime import datetime, timedelta
 import pytz
-
+from matplotlib.pyplot import legend, rcParams
 # Retorna o código base64 da imagem no formato PNG
 def Graphic():
 
@@ -40,7 +40,6 @@ def Graphic():
 
     # Coleta as medições
     for m in medicoes:
-        print(m)
         temperaturas.insert(0, m.temperatura)
         hora = m.hora.replace(tzinfo=tz_servidor)
         x.insert(0, hora)
@@ -51,7 +50,7 @@ def Graphic():
 
     # Plota os dados
     # plt.plot(x, data1, 'go')  # green bolinha
-    plt.plot(x, temperaturas, 'k-', color='red')  # linha tracejada vermelha
+    plt.plot(x, temperaturas, 'k-', color='red', label="Temperatura (°C)")  # linha tracejada vermelha
 
     # plt.plot(x, umidades, 'r^')  # red triangulo
     # plt.plot(x, umidades, 'k--', color='blue')  # linha tracejada azul
@@ -61,14 +60,14 @@ def Graphic():
     plt.grid(True)
     plt.set_xlabel("Horário")
     plt.set_ylabel("Temperatura (°C)")
-
+    plt.legend(loc="best", shadow=True, fontsize="small")
     fig.autofmt_xdate()
     plt.xaxis.set_major_formatter(dates.DateFormatter('%d/%m/%Y - %H:%M'))
     fig.tight_layout()
 
     # Buffer temporário
     buf = BytesIO()
-    fig.savefig(buf, format="png")
+    fig.savefig(buf, format="png", transparent = True)
 
     # Embute o conteúdo no html
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
