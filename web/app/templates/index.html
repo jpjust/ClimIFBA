@@ -11,7 +11,7 @@
 
 <div>
     <header>
-        <img id="logo" src="../static/images/LogoT.webp" alt="ClimIFBA Logo" /> 
+        <img id="logo" src="{{ url_for('static', filename='images/LogoT.webp') }}" alt="ClimIFBA Logo" /> 
         <h1>Meteoreologia Valença-BA</h1>
     </header>
 
@@ -40,8 +40,8 @@
     </body>
 
     <footer>
-        <img id="ifba" src="../static/images/ifbame.webp" alt="Imagem do Rodapé">
-        <a href="https://palletsprojects.com/p/flask/" target="_blank"><img id="made" src="../static/images/madewithflask.webp" alt="Feito com Flask"></a>
+        <img id="ifba" src="{{ url_for('static', filename='images/ifbame.webp') }}" alt="Imagem do Rodapé">
+        <a href="https://palletsprojects.com/p/flask/" target="_blank"><img id="made" src="{{ url_for('static', filename='images/madewithflask.webp') }}" alt="Feito com Flask"></a>
        <a href="https://portal.ifba.edu.br/valenca" target="_blank"><p>&copy; IFBA - Campus Valença</p></a>
     </footer>
 </div>
