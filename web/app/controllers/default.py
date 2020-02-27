@@ -41,6 +41,7 @@ def Graphic():
     # Coleta as medições
     for m in medicoes:
         temperaturas.insert(0, m.temperatura)
+        umidades.insert(0, m.umidade)
         hora = m.hora.replace(tzinfo=tz_servidor)
         x.insert(0, hora)
 
@@ -50,17 +51,20 @@ def Graphic():
 
     # Plota os dados
     # plt.plot(x, data1, 'go')  # green bolinha
-    plt.plot(x, temperaturas, 'k-', color='red', label="Temperatura (°C)")  # linha tracejada vermelha
+    plt.plot(x, temperaturas, 'k-', color='red')  # linha tracejada vermelha
 
     # plt.plot(x, umidades, 'r^')  # red triangulo
-    # plt.plot(x, umidades, 'k--', color='blue')  # linha tracejada azul
+    plt2 = plt.twinx()
+    plt2.plot(x, umidades, 'k-', color='blue')  # linha tracejada azul
 
     # Ajusta títulos e formatação
     plt.set_title("Medições")
     plt.grid(True)
     plt.set_xlabel("Horário")
-    plt.set_ylabel("Temperatura (°C)")
-    plt.legend(loc="best", shadow=True, fontsize="small")
+    plt.tick_params(axis="y", labelcolor="red")
+    plt.set_ylabel("Temperatura (°C)", color="red")
+    plt2.set_ylabel("Umidade do ar (%)", color="blue")
+    plt2.tick_params(axis ="y", labelcolor="blue")
     fig.autofmt_xdate()
     plt.xaxis.set_major_formatter(dates.DateFormatter('%d/%m/%Y - %H:%M'))
     fig.tight_layout()
