@@ -15,13 +15,15 @@ print("Content-type: text/html\n")
 # Pega os dados via GET
 form = cgi.FieldStorage()
 
-if "temp" not in form or "hum" not in form or "rain" not in form:
-    print("ERRO: Todos os parâmetros são obrigatórios.")
+if "id" not in form or "temp" not in form or "hum" not in form or "rain" not in form:
+    print("ERRO: Todos os parametros sao obrigatorios.")
     sys.exit()
 
+id = form["id"].value
 temperatura = form["temp"].value
 umidade = form["hum"].value
 chuva = form["rain"].value
+id = int(id)
 temperatura = float(temperatura)
 umidade = float(umidade)
 chuva = int(chuva)
@@ -34,17 +36,17 @@ if temperatura == umidade == 0:
 # Conecta no banco
 mydb = mysql.connector.connect(
     host = "mysql.just.pro.br",
-    user = "ifba_sensors",
+    user = "",
     passwd = "",
     database = "ifba_sensors"
 )
 
 # Faz a insercao
 mycursor = mydb.cursor()
-sql = "INSERT INTO medicoes (temperatura, umidade, chuva) VALUES (%s, %s, %s)"
-val = (temperatura, umidade, chuva)
+sql = "INSERT INTO medicoes (no, temperatura, umidade, chuva) VALUES (%s, %s, %s, %s)"
+val = (id, temperatura, umidade, chuva)
 mycursor.execute(sql, val)
 mydb.commit()
 
 # Mensagem final
-print("Temperatura: %f C\nUmidade: %f %%\nChuva: %d" % (temperatura, umidade, chuva))
+print("Sensor: %d\nTemperatura: %.2f C\nUmidade: %.2f %%\nChuva: %d" % (id, temperatura, umidade, chuva))

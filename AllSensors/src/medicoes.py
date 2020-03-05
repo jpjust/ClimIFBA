@@ -15,7 +15,7 @@ print("Content-type: text/html\n")
 # Conecta no banco
 banco = mysql.connector.connect(
     host = "mysql.just.pro.br",
-    user = "ifba_sensors",
+    user = "",
     passwd = "",
     database = "ifba_sensors"
 )
@@ -23,7 +23,7 @@ banco = mysql.connector.connect(
 # Faz a pesquisa das últimas 100 medições
 cursor = banco.cursor()
 cursor.execute("SET time_zone = '-3:00'")
-cursor.execute("SELECT hora, temperatura, umidade, chuva FROM medicoes ORDER BY hora DESC LIMIT 100")
+cursor.execute("SELECT no, hora, temperatura, umidade, chuva FROM medicoes ORDER BY hora DESC LIMIT 100")
 resultados = cursor.fetchall()
 
 # Exibe os resultados da consulta
@@ -33,6 +33,7 @@ print("""
         <h1>Ultimas 100 medicoes</h1>
         <table border="1">
             <tr>
+                <td><strong>Sensor</strong></td>
                 <td><strong>Hora</strong></td>
                 <td><strong>Temperatura</strong></td>
                 <td><strong>Umidade</strong></td>
@@ -43,9 +44,10 @@ for medicao in resultados:
     #medicao[3] = "Sim" if medicao[3] == 1 else "Não"
     print("""
             <tr>
-                <td>%s</td>
-                <td align="center">%d C</td>
-                <td align="center">%d %%</td>
+                <td align="center">%d</td>
+                <td align="center">%s</td>
+                <td align="center">%.2f C</td>
+                <td align="center">%.2f %%</td>
                 <td align="center">%s</td>
             <tr>
     """ % medicao)
