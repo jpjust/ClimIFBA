@@ -2,47 +2,51 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ClimIFBA</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ClimIFBA</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
 </head>
 
-<div>
-    <header>
-        <img id="logo" src="{{ url_for('static', filename='images/LogoT.webp') }}" alt="ClimIFBA Logo" /> 
-        <h1>Meteoreologia Valença-BA</h1>
-    </header>
+<body>
+  <header>
+    <img id="logo" src="{{ url_for('static', filename='images/LogoT.webp') }}" alt="ClimIFBA Logo" />
+    <h1>Meteorologia IFBA Valença</h1>
+  </header>
 
-    <body>
-        <form action="/" method="POST">
-            <fieldset id="field">
-                <div id="sfield">
-                    <h2 id="tdinicial" class="dinicial">Data e Hora <br /> Inicial:</h2>
-                        <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial" />
+  <div class="sfield">
+    <form action="/" method="POST">
+      <div class="inicio">
+        <h2 id="tdinicial" class="dinicial">Data e Hora <br /> Inicial:</h2>
+        <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial" />
+      </div>
 
-                    <h2  id="tdfinal" class="dfinal">Data e Hora <br /> Final:</h2>
-                        <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal" />
+      <div class="fim">
+        <h2  id="tdfinal" class="dfinal">Data e Hora <br /> Final:</h2>
+        <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal" />
+      </div>
 
-                        <button id="enviar" type="submit">Enviar</button>
-                </div>
+      <div class="botao">
+        <button id="enviar" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
 
-                <img id="graph" src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
+  <div class="grafico">
+    <img src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
 
-                <a href="data:image/png;base64,{{ graph }}" download="graph.png">
-                    <input id="download" type="button" />
-                </a>
-            </fieldset>
-        </form>
+    <div class="btn_download">
+      <a href="data:image/png;base64,{{ graph }}" download="graph.png">
+        <input id="download" type="button" />
+      </a>
+    </div>
+  </div>
 
-        <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
-    </body>
-
-    <footer>
-        <img id="ifba" src="{{ url_for('static', filename='images/ifbame.webp') }}" alt="Imagem do Rodapé">
-        <a href="https://palletsprojects.com/p/flask/" target="_blank"><img id="made" src="{{ url_for('static', filename='images/madewithflask.webp') }}" alt="Feito com Flask"></a>
-       <a href="https://portal.ifba.edu.br/valenca" target="_blank"><p>&copy; IFBA - Campus Valença</p></a>
-    </footer>
-</div>
+  <div class="rodape">
+    <img src="{{ url_for('static', filename='images/ifbame.webp') }}" alt="IFBA">
+    <a href="https://palletsprojects.com/p/flask/" target="_blank"><img src="{{ url_for('static', filename='images/madewithflask.webp') }}" alt="Feito com Flask"></a>
+    <a href="https://portal.ifba.edu.br/valenca" target="_blank"><p>&copy; IFBA - Campus Valença</p></a>
+  </div>
+</body>
 </html>
