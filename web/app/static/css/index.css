@@ -15,8 +15,11 @@ p {
 
 header {
   height: auto;
-  width: auto;
-  margin: auto;
+  width: 50%;
+  min-width: 640px;
+  margin: 10px auto;
+  border: groove medium;
+  padding: 10px;
   background-color: #0A5517;
   text-align: center;
 }
@@ -36,6 +39,7 @@ header h1 {
   text-align: center;
   height: auto;
   width: 50%;
+  min-width: 640px;
   margin: 10px auto;
   border: groove medium;
   padding: 10px;
@@ -58,7 +62,7 @@ header h1 {
   width: 100%;
 }
 
-input:hover{
+input:hover {
   background-color: #ccc;
   font-weight: bolder;
 }
@@ -83,6 +87,7 @@ input:hover{
   text-align: center;
   height: auto;
   width: 50%;
+  min-width: 640px;
   margin: 10px auto;
   border: groove medium;
   padding: 10px;
@@ -117,8 +122,10 @@ input:hover{
 .rodape {
   position: relative;
   text-align: center;
+  vertical-align: middle;
   height: auto;
   width: 50%;
+  min-width: 640px;
   margin: 10px auto;
   border: groove medium;
   padding: 10px;
