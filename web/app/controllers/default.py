@@ -11,16 +11,16 @@ import matplotlib.dates as dates
 from datetime import datetime, timedelta
 import pytz
 from matplotlib.pyplot import legend, rcParams
+
 # Retorna o código base64 da imagem no formato PNG
 def Graphic():
-
     # Define o timezone da plotagem e da hora que recebe do servidor
     matplotlib.rcParams['timezone'] = 'America/Bahia'
     tz_servidor = pytz.timezone('PST8PDT')
 
     # Obtém os dados
     if request.method == "POST":
-        data = setDate()
+        data = getDate()
         primeiro_dia = data[0]
         ultimo_dia = data[1]
         primeiro_dia = primeiro_dia.astimezone(tz_servidor)
@@ -30,13 +30,14 @@ def Graphic():
         ultimo_dia = datetime.now() - timedelta(days=1)
         ultimo_dia = ultimo_dia.astimezone(tz_servidor)
         medicoes = Medicao.query.filter(Medicao.hora >= ultimo_dia).order_by(Medicao.id.desc())
-    temperaturas = []
-    umidades = []
-    x = []
 
     # Se não houver medições, retorna nulo
     if medicoes.count() == 0:
         return 0
+
+    temperaturas = []
+    umidades = []
+    x = []
 
     # Coleta as medições
     for m in medicoes:
@@ -50,12 +51,9 @@ def Graphic():
     plt = fig.subplots()
 
     # Plota os dados
-    # plt.plot(x, data1, 'go')  # green bolinha
-    plt.plot(x, temperaturas, 'k-', color='red')  # linha tracejada vermelha
-
-    # plt.plot(x, umidades, 'r^')  # red triangulo
+    plt.plot(x, temperaturas, 'k-', color='red')  # linha contínua vermelha
     plt2 = plt.twinx()
-    plt2.plot(x, umidades, 'k-', color='blue')  # linha tracejada azul
+    plt2.plot(x, umidades, 'k-', color='blue')  # linha contínua azul
 
     # Ajusta títulos e formatação
     plt.set_title("Medições")
@@ -78,13 +76,12 @@ def Graphic():
     return data
 
 # Altera as datas para o gráfico
-def setDate():
-
+def getDate():
     # Obtém as datas fornecidas pelo usuário
     data_inicial, horario_inicial = request.form["dinicial"].split("T")
     data_final, horario_final = request.form["dfinal"].split("T")
 
-    # Splita as datas para inserí-las no datetme
+    # Faz um splot() nas datas para inserí-las no datetme
     ano_final, mes_final, dia_final = map(int, data_final.split("-"))
     hora_final, minuto_final = map(int, horario_final.split(":"))
     ano_inicial, mes_inicial, dia_inicial = map(int, data_inicial.split("-"))
@@ -101,12 +98,13 @@ def setDate():
 
 # Index
 def padrao():
-
-    # Datas padrões
+    # Datas para preenchimento do formulário
+    tz_local = pytz.timezone('America/Bahia')
     if request.method != "POST":
-        dfinal=str(datetime.now()).replace(" ", "T")[:16]
-        dinicial=str(datetime.now() - timedelta(days=1)).replace(" ", "T")[:16]
+        dfinal = str(datetime.now().astimezone(tz_local)).replace(" ", "T")[:16]
+        dinicial = str((datetime.now() - timedelta(days=1)).astimezone(tz_local)).replace(" ", "T")[:16]
     else:
         dfinal = request.form["dfinal"]
         dinicial = request.form["dinicial"]
+
     return render_template("index.html", graph=Graphic(), dfinal=dfinal , dinicial=dinicial)
