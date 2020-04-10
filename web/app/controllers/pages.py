@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 
 # Index
-def padrao():
+def index():
     # Datas para preenchimento do formulário
     tz_local = pytz.timezone('America/Bahia')
     if request.method != "POST":

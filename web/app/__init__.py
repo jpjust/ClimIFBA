@@ -12,8 +12,8 @@ migrate = Migrate(app, db)
 
 manager = Manager(app)
 manager.add_command("db", MigrateCommand)
-from app.controllers import default
+from app.controllers import pages
 
 @app.route('/', methods=["POST", "GET"], defaults={"graph": None})
 def index(graph):
-    return default.padrao()
+    return pages.index()
