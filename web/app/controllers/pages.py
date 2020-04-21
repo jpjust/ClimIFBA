@@ -1,6 +1,6 @@
 from flask import request
 from flask import render_template
-from app.controllers.graphic import *
+from app.controllers.graphic import Graphic
 from datetime import datetime, timedelta
 
 
