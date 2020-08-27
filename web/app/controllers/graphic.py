@@ -16,7 +16,7 @@ from matplotlib.pyplot import legend, rcParams
 def Graphic():
     # Define o timezone da plotagem e da hora que recebe do servidor
     matplotlib.rcParams['timezone'] = 'America/Bahia'
-    tz_servidor = pytz.timezone('PST8PDT')
+    tz_servidor = pytz.timezone('Etc/GMT+7')
 
     # Obtém os dados
     if request.method == "POST":
