@@ -1,51 +1,65 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>ClimIFBA</title>
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <title>ClimIFBA</title>
 </head>
-
 <body>
-  <header>
-    <img id="logo" src="{{ url_for('static', filename='images/LogoT.webp') }}" alt="ClimIFBA" />
-    <h1>Meteorologia IFBA Valença</h1>
-  </header>
+    <header>
+        <h1>ClimIFBA</h1>
+        <p>Meteorologia IFBA Valença</p>
+    </header>
 
-  <div class="sfield">
-    <form action="/" method="POST">
-      <div class="inicio">
-        <h2 id="tdinicial" class="dinicial">Data e Hora <br /> Inicial:</h2>
-        <input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial" />
-      </div>
+    <main>
+        <form action="climifba.html" method="post">
+            <fieldset>
+                <legend>Início</legend>
+                <input input id="fdinicial" class="dinicial" type="datetime-local" value="{{dinicial}}" name="dinicial">
+            </fieldset>
+            <fieldset>
+                <legend>Final</legend>
+                <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal">
+            </fieldset>
+            <input id="button" type="button" value="Filtrar">
+        </form>
 
-      <div class="fim">
-        <h2  id="tdfinal" class="dfinal">Data e Hora <br /> Final:</h2>
-        <input id="fdfinal" class="dfinal" type="datetime-local" value="{{dfinal}}" name="dfinal" />
-      </div>
+        <img src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade">
+    </main>
 
-      <div class="botao">
-        <button id="enviar" type="submit">Enviar</button>
-      </div>
-    </form>
-  </div>
+    <footer>
+        <nav id="developers">
+            <h2>Desenvolvedores</h2>
+            <ul id="social">
+                <li><a class="instagram" href="https://www.instagram.com/pupilo.py/" target="_blank" rel="noopener noreferrer external">/pupilo.py</a></li>
+                <li><a class="github" href="https://github.com/pupilo-py" target="_blank" rel="noopener noreferrer external">/pupilo-py</a></li>
+                <li><a class="linkedin" href="https://www.linkedin.com/in/pupilo-py/" target="_blank" rel="noopener noreferrer external">in/pupilo-py</a></li>
+                <li><a class="instagram" href="https://www.instagram.com/joao.paulo.just/" target="_blank" rel="noopener noreferrer external">/joao.paulo.just</a></li>
+                <li><a class="github" href="https://github.com/jpjust" target="_blank" rel="noopener noreferrer external">/jpjust</a></li>
+                <li><a class="linkedin" href="https://www.linkedin.com/in/jo%C3%A3o-paulo-just-peixoto-181658222/" target="_blank" rel="noopener noreferrer external">/in/jpjust</a></li>
+            </ul>
+        </nav>
 
-  <div class="grafico">
-    <img src="data:image/png;base64,{{ graph }}" alt="Gráfico da Temperatura e Umidade" />
+        <nav id="tools">
+            <h2>Tecnologias</h2>
+            <ul id="sites">
+                <li><a href="https://flask.palletsprojects.com/en/2.0.x/quickstart/" target="_blank" rel="noopener noreferrer external"><img src="{{ url_for('static', filename='images/flask.png') }}" alt="Logo Flask"> Flask</a></li>
+                <li><a href="https://www.python.org" target="_blank" rel="noopener noreferrer external"><img src="{{ url_for('static', filename='images/python.png') }}" alt="Logo Python"> Python</a></li>
+                <li><a href="https://www.linuxfoundation.org" target="_blank" rel="noopener noreferrer external"><img src="images/linux.png" alt="Logo Linux"> Linux</a></li>
+            </ul>
+        </nav>
 
-    <div class="btn_download">
-      <a href="data:image/png;base64,{{ graph }}" download="graph.png">
-        <input id="download" type="button" />
-      </a>
-    </div>
-  </div>
-
-  <div class="rodape">
-    <a href="http://portal.ifba.edu.br/valenca" target="_blank"><img src="{{ url_for('static', filename='images/ifba.webp') }}" alt="IFBA"></a>
-    <a href="https://palletsprojects.com/p/flask/" target="_blank"><img src="{{ url_for('static', filename='images/madewithflask.webp') }}" alt="Feito com Flask"></a>
-  </div>
+        <nav id="ifba">
+            <h2>IFBA</h2>
+            <ul id="sites">
+                <li><a class="instagram" href="https://www.instagram.com/pupilo.py/" target="_blank" rel="noopener noreferrer external">/ifbavalenca</a></li>
+                <li><a class="ifba" href="https://portal.ifba.edu.br/valenca" target="_blank" rel="noopener noreferrer external">.edu.br/valenca</a></li>
+                <li><a class="ifba" href="https://portal.ifba.edu.br" target="_blank" rel="noopener noreferrer external">.edu.br</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>
