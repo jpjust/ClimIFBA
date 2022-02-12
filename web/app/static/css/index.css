@@ -46,6 +46,7 @@ header > p {
 main {
     background-color: white;
     max-width: 760px;
+    min-height: 385px;
     margin: auto;
     padding: 20px;
     text-align: center;
